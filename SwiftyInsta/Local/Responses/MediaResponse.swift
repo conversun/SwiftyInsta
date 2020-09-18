@@ -172,8 +172,6 @@ public struct Media: IdentifiableParsedResponse {
         return size.width*size.height
     }
 
-    /// The `caption` value.
-    public var caption: Comment? { return Comment(rawResponse: rawResponse.caption) }
     /// The `commentCount` value.
     public var comments: Int { return rawResponse.commentCount.int ?? 0 }
     /// The `likeCount` value.
@@ -190,12 +188,6 @@ public struct Media: IdentifiableParsedResponse {
     /// The `user` value.
     public var user: User? {
         return User(rawResponse: rawResponse.user) ?? User(rawResponse: rawResponse.owner)
-    }
-    /// The `storyLocations` value.
-    public var locations: [StoryLocation] {
-        return rawResponse.storyLocations
-            .array?
-            .compactMap(StoryLocation.init) ?? []
     }
 
     // MARK: Codable

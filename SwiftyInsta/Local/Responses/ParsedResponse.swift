@@ -92,20 +92,6 @@ public extension ThreadIdentifiableParsedResponse {
     }
 }
 
-/// An **item identifiable** `ParsedResponse`.
-public protocol ItemIdentifiableParsedResponse: ParsedResponse {
-    /// The item identifier.
-    var itemIdentifier: Identifier<Message> { get }
-}
-/// The default implementation.
-public extension ItemIdentifiableParsedResponse {
-    /// The item identifier.
-    var itemIdentifier: Identifier<Message> {
-        return .init(primaryKey: nil,
-                     identifier: rawResponse.itemId.string)
-    }
-}
-
 /// An **cover identifiable** `ParsedResponse`.
 public protocol CoverIdentifiableParsedResponse: ParsedResponse {
     /// The media identifier.

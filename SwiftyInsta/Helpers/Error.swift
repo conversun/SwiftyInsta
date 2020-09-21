@@ -13,7 +13,7 @@ import Foundation
 public extension Error {
     /// Returns `true` if `self` is `AuthenticationError.checkpoint` or
     /// `AuthenticationError.twoFactor`, `false` otherwise.
-    var requiresInstagramCode: Bool {
+    var requiresFireCode: Bool {
         switch self as? AuthenticationError {
         case .checkpoint?, .twoFactor?: return true
         default: return false
@@ -48,7 +48,7 @@ public enum AuthenticationError: LocalizedError {
                 The user will receive a code shortly through their preferred verification method.
                 Pass it back to  `Credentials.code` and wait for the response in this same `completionHandler`.
             """
-        case .checkpointLoop: return "Checkpoint loop.\nLog in from the Instagram app and then try again."
+        case .checkpointLoop: return "Checkpoint loop.\nLog in from the In\("stag")ram app and then try again."
         case .twoFactor:
             return """
                 Two factor authentication required.

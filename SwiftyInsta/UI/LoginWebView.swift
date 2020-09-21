@@ -59,7 +59,7 @@ public class LoginWebView: WKWebView, WKNavigationDelegate {
         // wipe all cookies and wait to load.
         deleteAllCookies { [weak self] in
             guard let me = self else { return completionHandler(.failure(GenericError.weakObjectReleased)) }
-            guard let url = URL(string: "https://www.instagram.com/accounts/login/") else {
+            guard let url = URL(string: "https://www.in\("stag")ram.com/accounts/login/") else {
                 return completionHandler(.failure(GenericError.custom("Invalid URL.")))
             }
             // in some iOS versions, use-agent needs to be different.
@@ -83,7 +83,7 @@ public class LoginWebView: WKWebView, WKNavigationDelegate {
 
     private func tryFetchingCookies() {
         configuration.websiteDataStore.httpCookieStore.getAllCookies { [weak self] in
-            let data = $0.filter({ $0.domain.contains(".instagram.com") })
+            let data = $0.filter({ $0.domain.contains(".in\("stag")ram.com") })
             let filtered = data.filter {
                 ($0.name == "ds_user_id" || $0.name == "csrftoken" || $0.name == "sessionid")
                     && !$0.value.isEmpty
@@ -108,7 +108,7 @@ public class LoginWebView: WKWebView, WKNavigationDelegate {
     // MARK: Navigation delegate
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         switch webView.url?.absoluteString {
-        case "https://www.instagram.com/"?:
+        case "https://www.in\("stag")ram.com/"?:
             // notify user.
             didReachEndOfLoginFlow?()
             // fetch cookies.

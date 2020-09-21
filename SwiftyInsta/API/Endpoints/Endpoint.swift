@@ -25,22 +25,22 @@ public struct Endpoint {
     /// An `enum` providing for `Accounts` endpoints.
     enum Accounts: EndpointPath, CaseIterable, RawEndpointRepresentable {
         /// Create.
-        case create = "https://i.instagram.com/api/v1/accounts/create/"
+//        case create = "https://i.instagram.com/api/v1/accounts/create/"
         /// Login.
-        case login = "https://i.instagram.com/api/v1/accounts/login/"
+//        case login = "https://i.instagram.com/api/v1/accounts/login/"
         /// Two factor login.
-        case twoFactorLogin = "https://i.instagram.com/api/v1/accounts/two_factor_login/"
-        /// Send two factor login sms.
-        case sendTwoFactorLoginSms = "https://i.instagram.com/api/v1/accounts/send_two_factor_login_sms/"
+//        case twoFactorLogin = "https://i.instagram.com/api/v1/accounts/two_factor_login/"
+//        /// Send two factor login sms.
+//        case sendTwoFactorLoginSms = "https://i.instagram.com/api/v1/accounts/send_two_factor_login_sms/"
         /// Current user.
         case current = "https://i.instagram.com/api/v1/accounts/current_user/?edit=true"
-        /// Logout.
+//        /// Logout.
         case logout = "https://i.instagram.com/api/v1/accounts/logout/"
-        /// Set account public.
-        case setPublic = "https://i.instagram.com/api/v1/accounts/set_public/"
-        /// Set account private.
-        case setPrivate = "https://i.instagram.com/api/v1/accounts/set_private/"
-        /// Edit profile.
+//        /// Set account public.
+//        case setPublic = "https://i.instagram.com/api/v1/accounts/set_public/"
+//        /// Set account private.
+//        case setPrivate = "https://i.instagram.com/api/v1/accounts/set_private/"
+//        /// Edit profile.
     }
     
     /// An `enum` providing for `Feed` endpoints.

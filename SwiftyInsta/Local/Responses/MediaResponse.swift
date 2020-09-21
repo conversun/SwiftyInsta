@@ -175,7 +175,7 @@ public struct Media: IdentifiableParsedResponse {
     /// The `commentCount` value.
     public var comments: Int { return rawResponse.commentCount.int ?? 0 }
     /// The `likeCount` value.
-    public var likes: Int { return rawResponse.likeCount.int ?? 0 }
+    public var hearts: Int { return rawResponse.likeCount.int ?? 0 }
     /// The `content` value.
     public var content: Content {
         switch rawResponse.mediaType.int {

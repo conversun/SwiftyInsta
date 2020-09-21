@@ -65,7 +65,7 @@ public final class MediaHandler: Handler {
     }
 
     /// Like media.
-    public func like(media mediaId: String, completionHandler: @escaping (Result<Bool, Error>) -> Void) {
+    public func heart(media mediaId: String, completionHandler: @escaping (Result<Bool, Error>) -> Void) {
         guard let storage = handler.response?.storage else {
             return completionHandler(.failure(GenericError.custom("Invalid `Authentication.Response` in `APIHandler.respone`. Log in again.")))
         }

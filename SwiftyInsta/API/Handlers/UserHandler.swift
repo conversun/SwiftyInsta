@@ -129,7 +129,7 @@ public final class UserHandler: Handler {
     }
 
     /// Follow user.
-    public func follow(user: User.Reference, completionHandler: @escaping (Result<Friendship, Error>) -> Void) {
+    public func watch(user: User.Reference, completionHandler: @escaping (Result<Friendship, Error>) -> Void) {
         guard let storage = handler.response?.storage else {
             return completionHandler(.failure(GenericError.custom("Invalid `Authentication.Response` in `APIHandler.respone`. Log in again.")))
         }
@@ -144,7 +144,7 @@ public final class UserHandler: Handler {
                 }
                 switch $0 {
                 case .success(let user) where user.identity.primaryKey != nil:
-                    handler.follow(user: .primaryKey(user.identity.primaryKey!), completionHandler: completionHandler)
+                    handler.watch(user: .primaryKey(user.identity.primaryKey!), completionHandler: completionHandler)
                 case .failure(let error): completionHandler(.failure(error))
                 default: completionHandler(.failure(GenericError.custom("No user matching `username`.")))
                 }

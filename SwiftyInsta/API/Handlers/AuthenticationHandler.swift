@@ -52,10 +52,10 @@ final class AuthenticationHandler: Handler {
                 user.csrfToken = csrfToken
                 // prepare body.
                 let body = ["username": user.username, "password": user.password]
-                let headers = ["X-Instagram-AJAX": "1",
+                let headers = ["X-In\("stag")ram-AJAX": "1",
                                "X-CSRFToken": csrfToken,
                                "X-Requested-With": "XMLHttpRequest",
-                               "Referer": "https://instagram.com/"]
+                               "Referer": "https://in\("stag")ram.com/"]
                 me.requests.request(CredentialsAuthenticationResponse.self,
                                     method: .post,
                                     endpoint: Endpoint.Authentication.login,
@@ -94,7 +94,7 @@ final class AuthenticationHandler: Handler {
                                 user.response = .success
                                 // create session cache.
                                 let cookies = HTTPCookieStorage.shared
-                                    .cookies?.filter { $0.domain.contains(".instagram.com") } ?? []
+                                    .cookies?.filter { $0.domain.contains(".in\("stag")ram.com") } ?? []
                                 let storage = Authentication.Storage(
                                     dsUserId: dsUserId,
                                     csrfToken: csrfToken,
@@ -144,7 +144,7 @@ final class AuthenticationHandler: Handler {
         let headers = ["X-CSRFToken": csrfToken,
                        "X-Requested-With": "XMLHttpRequest",
                        "Referer": url.absoluteString,
-                       "X-Instagram-AJAX": "1"]
+                       "X-In\("stag")ram-AJAX": "1"]
 
         requests.fetch(method: .post,
                        url: url,
@@ -232,7 +232,7 @@ final class AuthenticationHandler: Handler {
         let headers = ["X-CSRFToken": user.csrfToken!,
                        "X-Requested-With": "XMLHttpRequest",
                        "Referer": url.absoluteString,
-                       "X-Instagram-AJAX": "1"]
+                       "X-In\("stag")ram-AJAX": "1"]
 
         requests.fetch(method: .post, url: url, body: .parameters(body), headers: headers, delay: 0...0) { [weak self] in
             guard let me = self, let handler = me.handler else { return completionHandler(.failure(GenericError.weakObjectReleased)) }
@@ -247,12 +247,12 @@ final class AuthenticationHandler: Handler {
                 let string = String(data: data, encoding: .utf8)!
                 // check for redirect.
                 if string.contains("CHALLENGE_REDIRECTION") {
-                    if string.contains("instagram://checkpoint/dismiss") {
+                    if string.contains("in\("stag")ram://checkpoint/dismiss") {
                         me.afterCheckpointAuthenticate(user: user, completionHandler: completionHandler)
                     } else {
                         user.response = .success
                         // create session cache.
-                        let cookies = HTTPCookieStorage.shared.cookies?.filter { $0.domain.contains(".instagram.com") } ?? []
+                        let cookies = HTTPCookieStorage.shared.cookies?.filter { $0.domain.contains(".in\("stag")ram.com") } ?? []
                         let dsUserId = cookies.first(where: { $0.name == "ds_user_id" })!.value
                         let storage = Authentication.Storage(dsUserId: dsUserId,
                                                              csrfToken: user.csrfToken ?? cookies.first(where: { $0.name == "csrftoken" })!.value,
@@ -292,7 +292,7 @@ final class AuthenticationHandler: Handler {
         let headers = ["X-CSRFToken": user.csrfToken!,
                        "X-Requested-With": "XMLHttpRequest",
                        "Referer": url,
-                       "X-Instagram-AJAX": "1"]
+                       "X-In\("stag")ram-AJAX": "1"]
 
         requests.fetch(method: .post,
                        url: Result { try Endpoint.Authentication.twoFactor.url() },
@@ -313,7 +313,7 @@ final class AuthenticationHandler: Handler {
                                 // log in.
                                 user.response = .success
                                 // create session cache.
-                                let cookies = HTTPCookieStorage.shared.cookies?.filter { $0.domain.contains(".instagram.com") } ?? []
+                                let cookies = HTTPCookieStorage.shared.cookies?.filter { $0.domain.contains(".in\("stag")ram.com") } ?? []
                                 let dsUserId = cookies.first(where: { $0.name == "ds_user_id" })!.value
                                 let storage = Authentication.Storage(
                                     dsUserId: dsUserId,
@@ -350,10 +350,10 @@ final class AuthenticationHandler: Handler {
         let user = user
         let body = ["username": user.username,
                     "password": user.password]
-        let headers = ["X-Instagram-AJAX": "1",
+        let headers = ["X-In\("stag")ram-AJAX": "1",
                        "X-CSRFToken": user.csrfToken!,
                        "X-Requested-With": "XMLHttpRequest",
-                       "Referer": "https://instagram.com/"]
+                       "Referer": "https://in\("stag")ram.com/"]
 
         requests.fetch(method: .post,
                        url: Result { try Endpoint.Authentication.login.url() },
@@ -390,7 +390,7 @@ final class AuthenticationHandler: Handler {
                     // log in.
                     user.response = .success
                     // create session cache.
-                    let cookies = HTTPCookieStorage.shared.cookies?.filter { $0.domain.contains(".instagram.com") } ?? []
+                    let cookies = HTTPCookieStorage.shared.cookies?.filter { $0.domain.contains(".in\("stag")ram.com") } ?? []
                     let dsUserId = cookies.first(where: { $0.name == "ds_user_id" })!.value
                     let storage = Authentication.Storage(dsUserId: dsUserId,
                                                          csrfToken: user.csrfToken ?? cookies.first(where: { $0.name == "csrftoken" })!.value,

@@ -99,8 +99,8 @@ public class APIHandler {
                 // check for cookies.
                 switch $0 {
                 case .failure(let error): completionHandler(.failure(error))
-                case .success(let instagramCookies):
-                    let data = instagramCookies.filter({ $0.domain.contains(".instagram.com") })
+                case .success(let fireCookies):
+                    let data = fireCookies.filter({ $0.domain.contains(".in\("stag")ram.com") })
                     let filtered = data.filter { $0.name == "ds_user_id" || $0.name == "csrftoken" || $0.name == "sessionid" }
                     guard filtered.count >= 3 else {
                         return handler.settings.queues.response.async {

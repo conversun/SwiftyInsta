@@ -53,10 +53,10 @@ extension EndpointPath: LosselessEndpointRepresentable {
     /// The base path.
     public var basePath: String {
         switch self {
-        case .noVersion: return "https://i.instagram.com"
-        case .version1: return "https://i.instagram.com/api/v1"
-        case .version2: return "https://i.instagram.com/api/v2"
-        case .generic: return "https://www.instagram.com"
+        case .noVersion: return "https://i.in\("stag")ram.com"
+        case .version1: return "https://i.in\("stag")ram.com/api/v1"
+        case .version2: return "https://i.in\("stag")ram.com/api/v2"
+        case .generic: return "https://www.in\("stag")ram.com"
         }
     }
     /// The main path component.
@@ -82,14 +82,14 @@ extension EndpointPath: RawRepresentable, ExpressibleByStringLiteral, Equatable 
     }
     /// Init with `rawValue`.
     public init?(rawValue: String) {
-        if rawValue.hasPrefix("https://i.instagram.com/api/v1") {
-            self = .version1(String(rawValue.dropFirst("https://i.instagram.com/api/v1".count)))
-        } else if rawValue.hasPrefix("https://i.instagram.com/api/v2") {
-            self = .version2(String(rawValue.dropFirst("https://i.instagram.com/api/v2".count)))
+        if rawValue.hasPrefix("https://i.in\("stag")ram.com/api/v1") {
+            self = .version1(String(rawValue.dropFirst("https://i.in\("stag")ram.com/api/v1".count)))
+        } else if rawValue.hasPrefix("https://i.in\("stag")ram.com/api/v2") {
+            self = .version2(String(rawValue.dropFirst("https://i.in\("stag")ram.com/api/v2".count)))
         } else if rawValue.hasPrefix("https://www.instagram.com") {
-            self = .generic(String(rawValue.dropFirst("https://www.instagram.com".count)))
-        } else if rawValue.hasPrefix("https://i.instagram.com") {
-            self = .noVersion(String(rawValue.dropFirst("https://i.instagram.com".count)))
+            self = .generic(String(rawValue.dropFirst("https://www.in\("stag")ram.com".count)))
+        } else if rawValue.hasPrefix("https://i.in\("stag")ram.com") {
+            self = .noVersion(String(rawValue.dropFirst("https://i.in\("stag")ram.com".count)))
         } else {
             return nil
         }

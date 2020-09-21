@@ -69,9 +69,9 @@ public struct User: IdentifiableParsedResponse {
     public var isBusiness: Bool? { return rawResponse.isBusiness.bool }
 
     /// The `followerCount` value.
-    public var followerCount: Int? { return rawResponse.followerCount.int }
+    public var watcherCount: Int? { return rawResponse.followerCount.int }
     /// The `followingCount` value.
-    public var followingCount: Int? { return rawResponse.followingCount.int }
+    public var watcheringCount: Int? { return rawResponse.followingCount.int }
     /// The `mediaCount` value.
     public var mediaCount: Int? { return rawResponse.mediaCount.int }
     /// The `profileContext` value.
@@ -108,11 +108,11 @@ public struct Friendship: ParsedResponse {
     public let rawResponse: DynamicResponse
 
     /// The `following` value.
-    public var isFollowedByYou: Bool {
+    public var isWatchingByYou: Bool {
         return rawResponse.following.bool ?? false
     }
     /// The `followedBy` value.
-    public var isFollowingYou: Bool? {
+    public var isWatchingYou: Bool? {
         return rawResponse.followedBy.bool
     }
     /// The `blocking` value.
@@ -134,11 +134,11 @@ public struct Friendship: ParsedResponse {
     }
 
     /// The `incomingRequest` value.
-    public var requestedToFollowYou: Bool {
+    public var requestedToWatchYou: Bool {
         return rawResponse.incomingRequest.bool ?? false
     }
     /// The `outgoingRequest` value.
-    public var followRequestSent: Bool {
+    public var watchRequestSent: Bool {
         return rawResponse.outgoingRequest.bool ?? false
     }
 

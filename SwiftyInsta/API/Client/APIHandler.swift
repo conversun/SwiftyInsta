@@ -21,7 +21,6 @@ public class Handler {
     var pages: PaginationHelper { return handler.pages }
 }
 
-/// The `Instagram Private API` client.
 public class APIHandler {
     /// A struct used to initialize `APIHandler`s.
     public struct Settings {

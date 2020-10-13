@@ -17,12 +17,6 @@ public protocol ParsedResponse: Codable {
     init?(rawResponse: DynamicResponse)
 }
 
-/// The identifier type.
-/// Most of `Instagram` models for their responses, contain both a numerical `pk`, representing the _primaryKey_ (i.e. unique)
-/// of the element in the _database_, and a string `id`, which is usually used to acces their info from the outside
-/// (and it's supposed to still be unique).
-/// `Identifier<Element>` allows to store everything related to "identifying" a response in one place, while also,
-/// thanks to the `Element` reference, allow for type specific comparisons.
 public struct Identifier<Element>: Hashable {
     /// The **numerical** primary key.
     public var primaryKey: Int?

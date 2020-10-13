@@ -107,7 +107,7 @@ extension LosselessEndpointRepresentable {
 
 /// Extend `RawRepresentable` to mimic `EndpointRepresentable`.
 public protocol RawEndpointRepresentable: EndpointRepresentable where Self: RawRepresentable, Self.RawValue: LosselessEndpointRepresentable { }
-public extension RawEndpointRepresentable {
-    /// The endpoint representable.
-    var representation: LosselessEndpointRepresentable { return rawValue }
-}
+//public extension RawEndpointRepresentable {
+//    /// The endpoint representable.
+//    var representation: LosselessEndpointRepresentable { return rawValue }
+//}

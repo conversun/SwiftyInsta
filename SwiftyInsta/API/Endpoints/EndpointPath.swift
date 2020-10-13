@@ -7,15 +7,15 @@
 
 import Foundation
 
+public protocol OriginURLProtocol {
+    var originURL: String { get }
+}
+
 /// An `enum` describing possible `URL`s.
 public enum EndpointPath {
-    /// Starting with `https://i.instagram.com
     case noVersion(String)
-    /// Starting with `https://i.instagram.com/api/v1`.
     case version1(String)
-    /// Starting with `https://i.instagram.com/api/v2`.
     case version2(String)
-    /// Starting with `https://www.instagram.com`.
     case generic(String)
 }
 /// Accessories.
@@ -86,7 +86,7 @@ extension EndpointPath: RawRepresentable, ExpressibleByStringLiteral, Equatable 
             self = .version1(String(rawValue.dropFirst("https://i.in\("stag")ram.com/api/v1".count)))
         } else if rawValue.hasPrefix("https://i.in\("stag")ram.com/api/v2") {
             self = .version2(String(rawValue.dropFirst("https://i.in\("stag")ram.com/api/v2".count)))
-        } else if rawValue.hasPrefix("https://www.instagram.com") {
+        } else if rawValue.hasPrefix("https://www.in\("stag")ram.com") {
             self = .generic(String(rawValue.dropFirst("https://www.in\("stag")ram.com".count)))
         } else if rawValue.hasPrefix("https://i.in\("stag")ram.com") {
             self = .noVersion(String(rawValue.dropFirst("https://i.in\("stag")ram.com".count)))

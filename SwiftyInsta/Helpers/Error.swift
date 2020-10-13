@@ -34,7 +34,7 @@ public enum AuthenticationError: LocalizedError {
 
     /// Hit a checkpoint. `suggestions` might be populated with obfuscated emaill and/or phone number.
     case checkpoint(suggestions: [String]?)
-    /// You keep hitting checkpoints. Log in from the **Instagram** app.
+    
     case checkpointLoop
     /// Two factor authentication step required.
     case twoFactor

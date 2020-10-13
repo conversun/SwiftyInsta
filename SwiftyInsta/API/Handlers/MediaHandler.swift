@@ -10,7 +10,6 @@
 import CryptoSwift
 import Foundation
 
-/// **Instagram** accepted `Media`s.
 public enum MediaType: String {
     /// Image.
     case image = "1"
@@ -64,7 +63,6 @@ public final class MediaHandler: Handler {
         }
     }
 
-    /// Like media.
     public func heart(media mediaId: String, completionHandler: @escaping (Result<Bool, Error>) -> Void) {
         guard let storage = handler.response?.storage else {
             return completionHandler(.failure(GenericError.custom("Invalid `Authentication.Response` in `APIHandler.respone`. Log in again.")))
@@ -82,7 +80,7 @@ public final class MediaHandler: Handler {
 
         requests.request(Status.self,
                          method: .post,
-                         endpoint: Endpoint.Media.like.media(mediaId),
+                         endpoint: Endpoint.Media.heart.media(mediaId),
                          body: .payload(body),
                          completion: { completionHandler($0.map { $0.state == .ok }) })
     }
